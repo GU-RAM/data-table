@@ -27,22 +27,50 @@
   max-height: 94vh;
 }
 
-#modal .header {
-  background-color: #6b6b6b;
-  color: #fff;
-  padding: 15px;
-  font-weight: 600;
-  display: flex;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  justify-content: space-between;
-  margin: -10px;
+.PopUp {
+  padding-bottom: 30px;
 }
 
-#modal button {
-  margin-left: auto;
-  background-color: #fff;
-  border-radius: 4px;
-  border: none;
+.PopUp ol {
+  padding-left: 30px;
+}
+
+.PopUp-header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: -10px;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  background-color: aqua;
+}
+
+.PopUp-header div {
+  margin: 10px 0;
+  background-color: white;
+  padding: 10px;
   cursor: pointer;
+  font-size: 24px;
+}
+
+ul,
+ol {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+ol li {
+  margin-bottom: 10px;
+}
+
+.img-carousel {
+  padding: 20px;
+}
+
+.img-carousel button {
+  background-color: red;
+}
+
+img {
+  max-width: 100%;
 }
