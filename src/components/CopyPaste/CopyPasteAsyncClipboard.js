@@ -1,6 +1,6 @@
 import React from 'react';
-import Copy from './Copy';
-import Paste from './Paste';
+import Copy from './CopyAsync';
+import Paste from './PasteAsync';
 
 const CopyAsync = () => {
   return (
