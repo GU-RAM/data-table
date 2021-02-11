@@ -78,3 +78,10 @@ ol li {
 img {
   max-width: 100%;
 }
+
+.clipboard-wrapper {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
