@@ -1,5 +1,6 @@
 import React from 'react';
 import ImgCarousel from '../ImgCarousel/ImgCarousel';
+import CopyCipboard from '../CopyClipboard/CopyCipboard';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const PopUp = ({ rowInfo, setShowModal }) => {
@@ -10,32 +11,26 @@ const PopUp = ({ rowInfo, setShowModal }) => {
         <h2>User Information</h2>
         <div onClick={() => setShowModal(false)}>X</div>
       </div>
-      <ol>
-        <li>
-          <strong>ID: </strong>
-          {id}
-        </li>
-        <li>
-          <strong>First Name: </strong>
-          {first_name}
-        </li>
-        <li>
-          <strong>Last Name: </strong>
-          {last_name}
-        </li>
-        <li>
-          <strong>Date of Birth: </strong>
-          {date_of_birth}
-        </li>
-        <li>
-          <strong>Country: </strong>
-          {country}
-        </li>
-        <li>
-          <strong>Phone: </strong>
-          {phone}
-        </li>
+      <ol className='PopUp-clipboard-list'>
+        {Object.keys({
+          id,
+          first_name,
+          last_name,
+          date_of_birth,
+          country,
+          phone,
+        }).map((item, index, ar) => {
+          return (
+            <CopyCipboard>
+              <li>
+                <strong>{item.replace(/_/g, ' ')}: </strong>
+                {rowInfo[item]}
+              </li>
+            </CopyCipboard>
+          );
+        })}
       </ol>
+
       <ImgCarousel />
     </div>
   );
