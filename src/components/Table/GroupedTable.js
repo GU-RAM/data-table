@@ -3,7 +3,7 @@ import { useTable, useGroupBy, useExpanded } from 'react-table';
 import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns/columns';
 import TableBody from './TableBody';
-import TableHeader from './TableHeader';
+import GroupedTableHeader from './GroupedTableHeader';
 import './table.css';
 
 const GroupedTable = () => {
@@ -19,7 +19,6 @@ const GroupedTable = () => {
   } = useTable(
     {
       initialState: { groupBy: ['country'] },
-      disableGroupBy: true,
       columns,
       data,
     },
@@ -30,7 +29,7 @@ const GroupedTable = () => {
   return (
     <>
       <table {...getTableProps()}>
-        <TableHeader headerGroups={headerGroups} />
+        <GroupedTableHeader headerGroups={headerGroups} />
         <TableBody
           getTableBodyProps={getTableBodyProps}
           rows={rows}

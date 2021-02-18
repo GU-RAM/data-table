@@ -2,12 +2,14 @@ table {
   font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
 table td,
 table th {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 0;
 }
 
 table tr {
@@ -22,11 +24,36 @@ table tr:hover {
   background-color: #ddd;
 }
 
-table th,
-tfoot td {
-  padding-top: 12px;
-  padding-bottom: 12px;
+table th {
   text-align: center;
   background-color: #4caf50;
   color: white;
+}
+
+tbody td {
+  padding: 12px 5px;
+}
+
+tbody td span {
+  display: flex;
+  align-content: center;
+}
+
+.column-header-name {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.column-header-name span {
+  opacity: 0;
+}
+
+.column-header-name:hover > span {
+  opacity: 1;
+}
+
+.cant-group-header {
+  padding: 10px;
 }

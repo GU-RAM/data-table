@@ -149,3 +149,17 @@ img {
 .fail-color {
   color: red;
 }
+
+.table-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.table-pagination__buttons,
+.table-pagination__pageIndex {
+  margin-right: 25px;
+}
+
+button {
+  cursor: pointer;
+}

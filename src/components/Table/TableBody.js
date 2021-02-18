@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../Modal/Modal';
 import PopUp from '../PopUp/PopUp';
+import { FiArrowRight, FiArrowDown } from 'react-icons/fi';
 
 const TableBody = ({ getTableBodyProps, rows, prepareRow }) => {
   const [showModal, setShowModal] = useState(false);
@@ -22,14 +23,23 @@ const TableBody = ({ getTableBodyProps, rows, prepareRow }) => {
                       }
                     }}
                     {...cell.getCellProps()}
+                    style={{
+                      background: cell.isGrouped
+                        ? '#d4ffaa'
+                        : cell.isAggregated
+                        ? '#e1eaaa'
+                        : cell.isPlaceholder
+                        ? '#ffecaa'
+                        : 'white',
+                    }}
                   >
                     {cell.isGrouped ? (
                       // If it's a grouped cell, add an expander and row count
                       <>
                         <span {...row.getToggleRowExpandedProps()}>
-                          {row.isExpanded ? '👇' : '👉'}
+                          {row.isExpanded ? <FiArrowDown /> : <FiArrowRight />}
+                          {cell.render('Cell')} ({row.subRows.length})
                         </span>{' '}
-                        {cell.render('Cell')} ({row.subRows.length})
                       </>
                     ) : cell.isAggregated ? (
                       // If the cell is aggregated, use the Aggregated
