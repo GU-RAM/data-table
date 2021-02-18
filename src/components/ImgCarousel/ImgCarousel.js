@@ -10,7 +10,7 @@ import cat6 from '../../assets/images/cats-6.jpg';
 const ImgCarousel = () => {
   return (
     <>
-      <Carousel className='img-carousel' showThumbs={false}>
+      <Carousel className='modal-carousel ' showThumbs={false}>
         <div>
           <img alt='cat' src={cat1} />
         </div>

@@ -11,15 +11,36 @@ const TableBody = ({ getTableBodyProps, rows, prepareRow }) => {
         {rows.map(row => {
           prepareRow(row);
           return (
-            <tr
-              onClick={() => {
-                setRowInfo(row.original);
-                setShowModal(!showModal);
-              }}
-              {...row.getRowProps()}
-            >
+            <tr {...row.getRowProps()}>
               {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                return (
+                  <td
+                    onClick={() => {
+                      if (row.original && cell.value) {
+                        setRowInfo(row.original);
+                        setShowModal(!showModal);
+                      }
+                    }}
+                    {...cell.getCellProps()}
+                  >
+                    {cell.isGrouped ? (
+                      // If it's a grouped cell, add an expander and row count
+                      <>
+                        <span {...row.getToggleRowExpandedProps()}>
+                          {row.isExpanded ? '👇' : '👉'}
+                        </span>{' '}
+                        {cell.render('Cell')} ({row.subRows.length})
+                      </>
+                    ) : cell.isAggregated ? (
+                      // If the cell is aggregated, use the Aggregated
+                      // renderer for cell
+                      cell.render('Aggregated')
+                    ) : cell.isPlaceholder ? null : ( // For cells with repeated values, render null
+                      // Otherwise, just render the regular cell
+                      cell.render('Cell')
+                    )}
+                  </td>
+                );
               })}
             </tr>
           );

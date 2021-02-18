@@ -1,3 +1,13 @@
+ul li {
+  padding-left: 0;
+}
+
+.App {
+  margin: 30px 150px;
+  border: 20px solid grey;
+  padding: 20px;
+}
+
 #modal {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -36,7 +46,7 @@
   justify-content: space-between;
   align-content: center;
   margin: -10px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding: 0 20px;
   background-color: aqua;
 }
@@ -56,12 +66,55 @@
 .PopUp-clipboard-list span {
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 5px 30px;
   cursor: pointer;
 }
 
 .PopUp-clipboard-list span svg {
   font-size: 20px;
+}
+
+.modal-carousel div {
+  height: 300px;
+}
+
+.modal-carousel button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-carousel img {
+  height: 100%;
+  margin-left: 0;
+  object-fit: contain;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* scroll bar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  scroll-behavior: smooth;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar-track:hover {
+  width: 20px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d6d2d2;
+  border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999898;
+  width: 15px;
 }
 
 ul,

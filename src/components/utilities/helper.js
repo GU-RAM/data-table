@@ -1,12 +1,11 @@
-async function copyPageUrl(inputValue, cb, cbFail) {
+async function copyPageUrl(inputValue, cb) {
   try {
-    console.log('guro');
     await navigator.clipboard.writeText(inputValue);
     console.log('Page URL copied to clipboard');
-    cb();
+    cb('SUCCESS');
   } catch (err) {
     console.error('Failed to copy: ', err);
-    cbFail(false);
+    cb('FAILED');
   }
 }
 

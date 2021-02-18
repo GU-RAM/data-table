@@ -1,10 +1,9 @@
 import React from 'react';
 import ImgCarousel from '../ImgCarousel/ImgCarousel';
-import CopyCipboard from '../CopyClipboard/CopyCipboard';
+import CopyClipboard from '../CopyClipboard/CopyClipboard';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const PopUp = ({ rowInfo, setShowModal }) => {
-  const { id, first_name, last_name, date_of_birth, country, phone } = rowInfo;
   return (
     <div className='PopUp'>
       <div className='PopUp-header'>
@@ -12,21 +11,14 @@ const PopUp = ({ rowInfo, setShowModal }) => {
         <div onClick={() => setShowModal(false)}>X</div>
       </div>
       <ol className='PopUp-clipboard-list'>
-        {Object.keys({
-          id,
-          first_name,
-          last_name,
-          date_of_birth,
-          country,
-          phone,
-        }).map((item, index, ar) => {
+        {Object.entries(rowInfo).map(([key, value]) => {
           return (
-            <CopyCipboard>
+            <CopyClipboard key={new Date()} text={value}>
               <li>
-                <strong>{item.replace(/_/g, ' ')}: </strong>
-                {rowInfo[item]}
+                <strong>{key.replace(/_/g, ' ')}: </strong>
+                {value}
               </li>
-            </CopyCipboard>
+            </CopyClipboard>
           );
         })}
       </ol>
