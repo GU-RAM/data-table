@@ -1,12 +1,30 @@
-import React, { useMemo } from 'react';
-import { useTable, useGroupBy, useExpanded } from 'react-table';
+import React, { useMemo, useState } from 'react';
+import {
+  useTable,
+  useGroupBy,
+  useExpanded,
+  useRowSelect,
+  usePagination,
+} from 'react-table';
 import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns/columns';
 import TableBody from './TableBody';
 import GroupedTableHeader from './GroupedTableHeader';
+import { Checkbox } from '../../components/Checkbox/Checkbox';
+import Modal from '../Modal/Modal';
+import WarningModal from './WarningModal';
 import './table.css';
 
 const GroupedTable = () => {
+  // const ref = useRef();
+
+  const [showModal, setShowModal] = useState(false);
+  const [removeRow, setRemoveRow] = useState(null);
+
+  // useOnClickOutside(ref, () => {
+  //   toggleModal();
+  // });
+
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
 
@@ -23,8 +41,31 @@ const GroupedTable = () => {
       data,
     },
     useGroupBy,
-    useExpanded
+    useExpanded,
+    usePagination,
+    useRowSelect,
+    hooks => {
+      hooks.visibleColumns.push(columns => [
+        ...columns,
+        {
+          id: 'selection',
+          Header: ({ getToggleAllRowsSelectedProps }) => (
+            <Checkbox {...getToggleAllRowsSelectedProps()} />
+          ),
+          Cell: ({ row }) => (
+            <Checkbox
+              {...row.getToggleRowSelectedProps()}
+              setRemoveRow={setRemoveRow}
+              setShowModal={setShowModal}
+              row={row}
+            />
+          ),
+        },
+      ]);
+    }
   );
+
+  const chooseData = rows.filter(dat => !dat.isSelected);
 
   return (
     <>
@@ -32,10 +73,19 @@ const GroupedTable = () => {
         <GroupedTableHeader headerGroups={headerGroups} />
         <TableBody
           getTableBodyProps={getTableBodyProps}
-          rows={rows}
+          rows={chooseData}
           prepareRow={prepareRow}
         />
       </table>
+      {showModal ? (
+        <Modal>
+          <WarningModal
+            // modalRef={ref}
+            removeRow={removeRow}
+            setShowModal={setShowModal}
+          />
+        </Modal>
+      ) : null}
     </>
   );
 };

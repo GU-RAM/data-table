@@ -1,16 +1,9 @@
 import React, { useMemo } from 'react';
-import {
-  useTable,
-  useGroupBy,
-  useExpanded,
-  useRowSelect,
-  usePagination,
-} from 'react-table';
+import { useTable, useGroupBy, useExpanded, usePagination } from 'react-table';
 import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns/columns';
 import TableBody from './TableBody';
 import BasicTableHeader from './BasicTableHeader';
-import { Checkbox } from '../../components/Checkbox/Checkbox';
 import './table.css';
 
 export const BasicTable = () => {
@@ -21,8 +14,8 @@ export const BasicTable = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    page,
     nextPage,
+    page,
     previousPage,
     canNextPage,
     canPreviousPage,
@@ -38,24 +31,10 @@ export const BasicTable = () => {
     },
     useGroupBy,
     useExpanded,
-    usePagination,
-    useRowSelect,
-    hooks => {
-      hooks.visibleColumns.push(columns => [
-        ...columns,
-        {
-          id: 'selection',
-          Header: ({ getToggleAllRowsSelectedProps }) => (
-            <Checkbox {...getToggleAllRowsSelectedProps()} />
-          ),
-          Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />,
-        },
-      ]);
-    }
+    usePagination
   );
 
   const { pageIndex } = state;
-  const chooseData = page.filter(dat => !dat.isSelected);
 
   return (
     <>
@@ -63,7 +42,7 @@ export const BasicTable = () => {
         <BasicTableHeader headerGroups={headerGroups} />
         <TableBody
           getTableBodyProps={getTableBodyProps}
-          rows={chooseData}
+          rows={page}
           prepareRow={prepareRow}
         />
       </table>
@@ -74,7 +53,6 @@ export const BasicTable = () => {
             {pageIndex + 1} of {pageOptions.length}
           </strong>
         </span>
-        {'  '}
         <div className='table-pagination__buttons'>
           <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
             {'<<'}
@@ -105,7 +83,7 @@ export const BasicTable = () => {
             }}
             style={{ width: '50px' }}
           />
-        </span>{' '}
+        </span>
       </div>
     </>
   );

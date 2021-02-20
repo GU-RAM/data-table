@@ -13,7 +13,7 @@ const PopUp = ({ rowInfo, setShowModal }) => {
       <ol className='PopUp-clipboard-list'>
         {Object.entries(rowInfo).map(([key, value]) => {
           return (
-            <CopyClipboard key={new Date()} text={value}>
+            <CopyClipboard key={key} text={value}>
               <li>
                 <strong>{key.replace(/_/g, ' ')}: </strong>
                 {value}
