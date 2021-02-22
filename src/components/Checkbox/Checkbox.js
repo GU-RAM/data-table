@@ -9,14 +9,16 @@ export const Checkbox = React.forwardRef(
       resolvedRef.current.indeterminate = indeterminate;
     }, [resolvedRef, indeterminate]);
 
-    const guro = () => {
+    const clickHandler = () => {
       setShowModal(true);
       setRemoveRow(row);
     };
 
     return (
-      <div onClick={guro}>
-        <input type='checkbox' ref={resolvedRef} {...rest} />
+      <div onClick={clickHandler}>
+        <span ref={resolvedRef} {...rest}>
+          delete
+        </span>
       </div>
     );
   }

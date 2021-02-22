@@ -12,18 +12,12 @@ import TableBody from './TableBody';
 import GroupedTableHeader from './GroupedTableHeader';
 import { Checkbox } from '../../components/Checkbox/Checkbox';
 import Modal from '../Modal/Modal';
-import WarningModal from './WarningModal';
+import DeleteModal from './DeleteModal';
 import './table.css';
 
 const GroupedTable = () => {
-  // const ref = useRef();
-
   const [showModal, setShowModal] = useState(false);
   const [removeRow, setRemoveRow] = useState(null);
-
-  // useOnClickOutside(ref, () => {
-  //   toggleModal();
-  // });
 
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
@@ -79,10 +73,10 @@ const GroupedTable = () => {
       </table>
       {showModal ? (
         <Modal>
-          <WarningModal
-            // modalRef={ref}
+          <DeleteModal
             removeRow={removeRow}
             setShowModal={setShowModal}
+            // dataToDelete={dataToDelete}
           />
         </Modal>
       ) : null}
