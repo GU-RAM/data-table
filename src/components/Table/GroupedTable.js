@@ -43,9 +43,9 @@ const GroupedTable = () => {
         ...columns,
         {
           id: 'selection',
-          Header: ({ getToggleAllRowsSelectedProps }) => (
-            <Checkbox {...getToggleAllRowsSelectedProps()} />
-          ),
+          // Header: ({ getToggleAllRowsSelectedProps }) => (
+          //   <Checkbox {...getToggleAllRowsSelectedProps()} />
+          // ),
           Cell: ({ row }) => (
             <Checkbox
               {...row.getToggleRowSelectedProps()}
@@ -73,11 +73,7 @@ const GroupedTable = () => {
       </table>
       {showModal ? (
         <Modal>
-          <DeleteModal
-            removeRow={removeRow}
-            setShowModal={setShowModal}
-            // dataToDelete={dataToDelete}
-          />
+          <DeleteModal removeRow={removeRow} setShowModal={setShowModal} />
         </Modal>
       ) : null}
     </>

@@ -1,10 +1,6 @@
 import React from 'react';
 
 const DeleteModal = ({ setShowModal, removeRow }) => {
-  console.log(
-    '🚀 ~ file: DeleteModal.js ~ line 4 ~ DeleteModal ~ removeRow',
-    removeRow
-  );
   const deleteHandler = () => {
     removeRow.toggleRowSelected();
     setShowModal(false);

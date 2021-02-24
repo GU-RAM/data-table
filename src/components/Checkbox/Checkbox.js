@@ -17,7 +17,7 @@ export const Checkbox = React.forwardRef(
     return (
       <div onClick={clickHandler}>
         <span ref={resolvedRef} {...rest}>
-          delete
+          {!row.isGrouped && 'delete'}
         </span>
       </div>
     );
