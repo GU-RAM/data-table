@@ -16,6 +16,10 @@ const TableSidePage = ({ rowInfo, setShowModal, setSideColumnActive }) => {
         <li>Birthday: {date_of_birth}</li>
         <li>Phone: {phone}</li>
       </ul>
+      <div className='side-column-footer'>
+        <button>ACCEPT</button>
+        <button>REJECT</button>
+      </div>
     </>
   );
 };

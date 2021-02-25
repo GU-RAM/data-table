@@ -95,3 +95,17 @@ tbody td span {
   padding: 10px;
   border-bottom: 2px solid blanchedalmond;
 }
+
+.side-column-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.side-column-footer > button {
+  margin-right: 20px;
+}
+
+.side-column-footer button {
+  padding: 10px;
+  font-weight: 550;
+}
