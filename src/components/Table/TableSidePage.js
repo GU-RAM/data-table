@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TableSidePage = ({ rowInfo, setShowModal, setSideColumnActive }) => {
+const TableSidePage = ({ rowInfo, setSideColumnActive }) => {
   const { id, first_name, last_name, country, date_of_birth, phone } = rowInfo;
   return (
     <>

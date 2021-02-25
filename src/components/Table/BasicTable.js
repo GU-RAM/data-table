@@ -94,9 +94,10 @@ export const BasicTable = () => {
         </div>
       </div>
       {sideColumnActive && (
-        <div className='side-column'>
+        <div className='side-column slide-fwd-center'>
           <TableSidePage
             rowInfo={rowInfo}
+            sideColumnActive={sideColumnActive}
             setSideColumnActive={setSideColumnActive}
           />
         </div>
