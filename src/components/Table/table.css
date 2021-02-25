@@ -82,8 +82,8 @@ tbody td span {
 }
 .split-page-table {
   display: grid;
-  -webkit-animation: 0.2s curtain cubic-bezier(0.86, 0, 0.07, 1) 0.2s both;
-  animation: 0.2s curtain cubic-bezier(0.86, 0, 0.07, 1) 0.2s both;
+  -webkit-animation: 0.1s curtain cubic-bezier(0.86, 0, 0.07, 1) 0.1s both;
+  animation: 0.1s curtain cubic-bezier(0.86, 0, 0.07, 1) 0.1s both;
   grid-template-columns: 65% 35%;
 }
 
