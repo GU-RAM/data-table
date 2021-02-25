@@ -3,8 +3,8 @@ ul li {
 }
 
 .App {
-  margin: 30px 150px;
-  border: 20px solid grey;
+  /* margin: 30px 150px;
+  border: 20px solid grey; */
   padding: 20px;
 }
 
@@ -41,25 +41,31 @@ ul li {
   padding-bottom: 30px;
 }
 
-.PopUp-header {
+.PopUp-header,
+.side-column-header {
   display: flex;
   justify-content: space-between;
   align-content: center;
+  align-items: center;
   margin: -10px;
   margin-bottom: 20px;
   padding: 0 20px;
-  background-color: aqua;
+  background-color: goldenrod;
 }
 
-.PopUp-header div {
+.PopUp-header div,
+.side-column-header div {
   margin: 10px 0;
   background-color: white;
   padding: 10px;
   cursor: pointer;
   font-size: 24px;
+  display: flex;
+  align-items: center;
 }
 
-.PopUp-header div:hover {
+.PopUp-header div:hover,
+.side-column-header div:hover {
   box-shadow: 2px 2px 6px #000;
 }
 
@@ -162,4 +168,8 @@ img {
 
 button {
   cursor: pointer;
+}
+
+.side-column-header h2 {
+  margin: 0;
 }

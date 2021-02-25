@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
-import Modal from '../Modal/Modal';
-import PopUp from '../PopUp/PopUp';
+// import React, { useState } from 'react';
+// import Modal from '../Modal/Modal';
+// import PopUp from '../PopUp/PopUp';
 import { FiArrowRight, FiArrowDown } from 'react-icons/fi';
 
-const TableBody = ({ getTableBodyProps, rows, prepareRow }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [rowInfo, setRowInfo] = useState([]);
+const TableBody = ({
+  getTableBodyProps,
+  rows,
+  prepareRow,
+  setSideColumnActive,
+  setRowInfo,
+}) => {
+  // const [showModal, setShowModal] = useState(false);
+  // const [rowInfo, setRowInfo] = useState([]);
+
+  const sideColumnShowHandler = (row, cell) => {
+    if (row.original && cell.value) {
+      setRowInfo(row.original);
+      // setShowModal(!showModal);
+      setSideColumnActive(true);
+    }
+  };
+
   return (
     <>
       <tbody {...getTableBodyProps()}>
@@ -16,12 +31,7 @@ const TableBody = ({ getTableBodyProps, rows, prepareRow }) => {
               {row.cells.map(cell => {
                 return (
                   <td
-                    onClick={() => {
-                      if (row.original && cell.value) {
-                        setRowInfo(row.original);
-                        setShowModal(!showModal);
-                      }
-                    }}
+                    onClick={() => sideColumnShowHandler(row, cell)}
                     {...cell.getCellProps()}
                     style={{
                       background: cell.isGrouped
@@ -55,11 +65,11 @@ const TableBody = ({ getTableBodyProps, rows, prepareRow }) => {
             </tr>
           );
         })}
-        {showModal ? (
+        {/* {showModal ? (
           <Modal>
             <PopUp rowInfo={rowInfo} setShowModal={setShowModal} />
           </Modal>
-        ) : null}
+        ) : null} */}
       </tbody>
     </>
   );

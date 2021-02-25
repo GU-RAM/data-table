@@ -76,3 +76,22 @@ tbody td span {
   text-align: center;
   padding: 0 10px;
 }
+
+.full-page-table {
+  display: block;
+}
+.split-page-table {
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+
+.side-column {
+  padding: 10px;
+  background-color: grey;
+}
+
+.side-column li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 2px solid blanchedalmond;
+}
